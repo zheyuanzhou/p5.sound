@@ -16,4 +16,28 @@
 
 **11** example is the the comprehensive Sound Visualization FFT(Fast Fourier transform)
 
+---
+## Concepts
+**Two methods laoding the sound file**
 
+First Methods would show the loading text before loaded on browser
+```ruby
+function preload() {
+    song = loadSound("background.mp3");
+}
+
+function setup() {
+    song.play();
+}
+```
+Seond Methos using callback function in second argument being triggered when this sound is ready
+```ruby
+function setup() {
+    song = loadSound("background.mp3", loaded);
+}
+
+function loaded() {
+    console.log("LOADED");
+    song.play();
+}
+```

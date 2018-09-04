@@ -10,19 +10,24 @@
 var button;
 
 function setup() {
-    createCanvas(100, 100);
+    createCanvas(200, 200);
     button = createButton("Play");
-  	button.mousePressed(toggle);
+    button.mousePressed(toggle);
 
-  	env = new p5.Env();
-  	env.setADSR(1, 0.25, 0.2, 1);//attacktime reach the peak volume
-  	env.setRange(0.8, 0);
+    env = new p5.Env();
+    //first para: how long to reach the target (grad move to the volume)
+    //second para: how long to get regular volume (duration time)
+    //third para: volume between 0 to 1
+    //forth para: how long to fade out the time
+    env.setADSR(0.001, 0.25, 0.5, 1);
+    //max (attackLevel) and min (releaseLevel) of envelope.
+    env.setRange(0.8, 0);
 
-  	osc = new p5.Oscillator();
-  	osc.setType("triangle");
-  	osc.amp(env);
-  	osc.freq(440);
-  	osc.start();
+    osc = new p5.Oscillator();
+    osc.amp(env);
+    osc.freq(440);
+    osc.setType("triangle")
+    osc.start();
 }
 
 function draw() {

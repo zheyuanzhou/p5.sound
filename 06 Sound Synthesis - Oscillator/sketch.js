@@ -8,8 +8,18 @@
 
 var osc;
 
+// function preload() {
+// 	osc = new p5.Oscillator();
+// 	osc.setType("triangle");
+// 	osc.freq(440);
+// 	osc.amp(0.2);
+// 	osc.pan(1, 3);
+// 	osc.start();
+// }
+
 function setup() {
     createCanvas(100, 100);
+    
     osc = new p5.Oscillator();
     osc.setType("triangle");
     osc.freq(440);//tone

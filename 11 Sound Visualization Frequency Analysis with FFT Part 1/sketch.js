@@ -31,14 +31,20 @@ function setup() {
 
 function draw() {
     background(0);
-    //stroke(frameCount % 256, 255, 255);
-    var spectrum = fft.analyze();
-    w = width / 256;
+
+    var spectrum = fft.analyze();//return amp value along the fre domain
+
+    //computes amplitude values along the frequency domain.
+    //The array indices correspond to frequencies (i.e. pitches), 
+    //from the lowest to the highest that humans can hear. 
+    //Each value represents amplitude at that slice of the frequency spectrum.
+    
+    w = width / 128;
 
     for(let i = 0; i < spectrum.length; i++) {
         stroke(i, 255, 255);
-    	var amp = spectrum[i];
-    	var y = map(amp, 0, 255, height, 0);
-    	line(i, height, i, y);
+        var amp = spectrum[i];
+        var y = map(amp, 0, 255, height, 0);
+        line(i * w, height, i * w, y);
     }
 }
